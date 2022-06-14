@@ -7,6 +7,8 @@ public class MenuButtonsScript : MonoBehaviour
 {
     public GameObject objectToSpawn;
     [SerializeField] TextMeshPro sizesText;
+    public string sizeOne = "1500";
+    public string sizeTwo = "1500";
 
     public void Start()
     {
@@ -16,7 +18,7 @@ public class MenuButtonsScript : MonoBehaviour
     public void NieuweMat()
     {
         objectToSpawn.SetActive(true);
-        sizesText.text = "1500mm" + "x" + "1500mm";
+        sizesText.text = sizeOne + "mm x " + sizeTwo + "mm";
         // Instantiate(objectToSpawn, GameObject.Find("Spawner").transform.position, GameObject.Find("Spawner").transform.rotation);
     }
 
