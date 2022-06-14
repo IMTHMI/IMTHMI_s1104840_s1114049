@@ -135,7 +135,11 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2741141162915576020, guid: 059d370513adcc34d89d617fc03c2870, type: 2}
+  - {fileID: 7910667592093025136, guid: 13f1f7863605ffc45ae34089f33e2d1c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -613,11 +617,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: IMTHMIs1104840s1114049
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 0068aad3e59ed901
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: IMTHMI_s1104840_s1114049
