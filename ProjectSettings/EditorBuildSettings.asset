@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SizingTestScene.unity
+    guid: 1f21d9e02b756c14abddf6c0b420c7d6
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 13f1f7863605ffc45ae34089f33e2d1c, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 059d370513adcc34d89d617fc03c2870, type: 2}
