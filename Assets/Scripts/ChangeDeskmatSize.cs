@@ -18,6 +18,7 @@ public class ChangeDeskmatSize : MonoBehaviour
             primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
             primitive.transform.parent = assemblyObj.transform;
             primitive.transform.localPosition = new Vector3(0, 0, 0);
+            primitive.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         
 
