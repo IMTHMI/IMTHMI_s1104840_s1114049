@@ -1,95 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ChangeDeskmatSize : MonoBehaviour
 {
     bool hasChanged;
     GameObject primitive;
-    public GameObject yourObject;
-    public GameObject assemblyObj;
+    [SerializeField] TextMeshPro sizesText;
+    public Material deskmatMaterial;
+    public List<List<int>> sizingList;
     int pastSize;
     int currentSize;
 
     private void Swap()
     {
-        if (pastSize==0)
-        {
-            primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            primitive.transform.parent = assemblyObj.transform;
-            primitive.transform.localPosition = new Vector3(0, 0, 0);
-            primitive.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        
-
-
-        switch (currentSize)
-        {
-            case 0:
-                Destroy(primitive);
-                yourObject.SetActive(true);
-                return;
-            case 1:
-                primitive.transform.localScale = new Vector3(0.3f, 0.001f, 0.3f);
-
-                break;
-            case 2:
-                primitive.transform.localScale = new Vector3(0.4f, 0.001f, 0.3f);
-
-                break;
-            case 3:
-                primitive.transform.localScale = new Vector3(0.6f, 0.001f, 0.3f);
-
-                break;
-            case 4:
-                primitive.transform.localScale = new Vector3(0.6f, 0.001f, 0.4f);
-
-                break;
-
-            case 5:
-                primitive.transform.localScale = new Vector3(0.9f, 0.001f, 0.3f);
-
-                break;
-
-            case 6:
-                primitive.transform.localScale = new Vector3(0.9f, 0.001f, 0.4f);
-
-                break;
-
-            case 7:
-                primitive.transform.localScale = new Vector3(0.9f, 0.001f, 0.5f);
-
-                break;
-
-            default:
-                break;
-        }
-
-        yourObject.SetActive(false);
+        primitive.transform.localScale = new Vector3(sizingList[currentSize][0]/(float)1000, 0.001f, sizingList[currentSize][1]/(float)1000);
+        sizesText.text = sizingList[currentSize][0] + "mm x " + sizingList[currentSize][1] + "mm";
     }
 
     public void IncreaseSize()
     {
-        pastSize = currentSize++;
-        Swap();
+        if (currentSize < 25)
+        {
+            pastSize = currentSize++;
+            Swap();
+        }
     }
 
     public void DecreaseSize()
     {
-        pastSize = currentSize--;
-        Swap();
+        if (currentSize > 0)
+        {
+            pastSize = currentSize--;
+            Swap();
+        }
+
     }
 
     public void Reset()
     {
-        currentSize = 0;
+        currentSize = 1;
         Swap();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Fill list with all available sizes
+        sizingList = new List<List<int>> {
+            new List<int> { 300, 300 },
+            new List<int> { 400, 300 },
+            new List<int> { 600, 300 },
+            new List<int> { 600, 400 },
+            new List<int> { 900, 300 },
+            new List<int> { 900, 400 },
+            new List<int> { 900, 500 },
+            new List<int> { 900, 600 },
+            new List<int> { 900, 700 },
+            new List<int> { 1000, 300 },
+            new List<int> { 1000, 400 },
+            new List<int> { 1000, 500 },
+            new List<int> { 1000, 600 },
+            new List<int> { 1000, 700 },
+            new List<int> { 1200, 300 },
+            new List<int> { 1200, 400 },
+            new List<int> { 1200, 500 },
+            new List<int> { 1200, 600 },
+            new List<int> { 1200, 700 },
+            new List<int> { 1200, 800 },
+            new List<int> { 1200, 900 },
+            new List<int> { 1500, 600 },
+            new List<int> { 1500, 700 },
+            new List<int> { 1500, 800 },
+            new List<int> { 1500, 900 },
+        };
+
+        // Create deskmat cube object
+        primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        primitive.transform.parent = gameObject.transform;
+        primitive.transform.localPosition = new Vector3(0, 0, 0);
+        primitive.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        primitive.GetComponent<Renderer>().material = deskmatMaterial;
+
+        // Set sizing based on first item in the list
+        Swap();
     }
 
     // Update is called once per frame
